@@ -129,7 +129,8 @@ class CDN:
     def d_dy(self, f):
         
         if (self.grid.is_1d()):
-            print "Trying to compute d_dy on a 1D grid. Dont!"
+            print("Trying to compute d_dy on a 1D grid. Dont!")
+
             sys.exit()
 
         nx = self.grid.nx 
@@ -155,7 +156,7 @@ class CDN:
     def d_dydy(self, f):
         
         if (self.grid.is_1d()):
-            print "Trying to compute d_dydy on a 1D grid. Dont!"
+            print ("Trying to compute d_dydy on a 1D grid. Dont!")
             sys.exit()
 
         nx = self.grid.nx 

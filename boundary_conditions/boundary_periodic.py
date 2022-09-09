@@ -20,7 +20,7 @@ class BoundaryPeriodic:
             self.apply = self.apply_bottom    
 
         else:
-            print "invalid boundary location: " + location
+            print ("invalid boundary location: " + location)
             sys.exit()
 
     def apply_left(self, W, grid):
@@ -62,7 +62,7 @@ class BoundaryPeriodic:
         nx = grid.nx
         ny = grid.ny
         if (grid.is_1d()):
-            print "applying top boundary for 1d grid, DONT!"
+            print ("applying top boundary for 1d grid, DONT!")
             sys.exit()	 
 
         else:
@@ -77,7 +77,7 @@ class BoundaryPeriodic:
         nx = grid.nx
         ny = grid.ny
         if (grid.is_1d()):
-            print "applying bottom boundary for 1d grid, DONT!"
+            print ("applying bottom boundary for 1d grid, DONT!")
             sys.exit()	
             
         else:

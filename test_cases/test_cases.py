@@ -30,6 +30,38 @@ class TestCase:
             boundary.apply(W,grid)
 
 
+class Sod_x(TestCase):
+    def __init__(self, name):
+        boundary_conditions = [BoundaryNeumann("left"), BoundaryNeumann("right"), BoundaryNeumann("top"), BoundaryNeumann("bottom")]
+    
+        TestCase.__init__(self, name, boundary_conditions)
+
+        
+    def get_initial_condition(self, grid):
+        
+        X = grid.X
+        Y = grid.Y
+        nx = grid.nx
+        ny = grid.ny
+        ngc = grid.ngc
+        Wtemp = np.zeros((nx, ny, 4))
+
+        #rho p u v
+        left=  [1.0, 1.0, 0.0, 0.0]  
+        right = [0.125, 1.0, 0.0, 0.0]
+        Wtemp[0:int(nx/2), :, :] = left
+        Wtemp[int(nx/2):, :, :] = right
+        
+
+
+        W = np.zeros((nx + 2*ngc, ny + 2*ngc, 4))
+        W[ngc:-ngc, ngc:-ngc, :] = Wtemp
+        
+        self.apply_neumann_all(W, grid)
+        
+        return W         
+
+
 class QuadrantTestCase(TestCase):
     
     def __init__(self, name, upper_left, upper_right, lower_left, lower_right):

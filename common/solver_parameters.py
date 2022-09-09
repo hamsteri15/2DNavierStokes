@@ -16,6 +16,7 @@ from laplacian import Laplacian
 from filter_none import FilterNone
 from rk4 import Rk4
 from rk3 import Rk3
+from rk1 import Rk1
 from laxfriedrichs_flux import LaxFriedrichs
 from vanleer_flux import VanLeer
 from physical_flux import PhysicalFlux
@@ -58,7 +59,7 @@ class TimeParameters:
             return Rk4()
             
         else:
-            print "Invalid time scheme"
+            print ("Invalid time scheme")
             sys.exit()
         
 class EulerSolverParameters:
@@ -92,7 +93,7 @@ class EulerSolverParameters:
             return Pade(grid)
             
         else:
-            print "Invalid convection scheme"
+            print ("Invalid convection scheme")
             sys.exit()
             
     def get_convection_flux(self, gamma):
@@ -107,7 +108,7 @@ class EulerSolverParameters:
             return LaxFriedrichs(gamma)
             
         else:
-            print "Invalid flux type"
+            print ("Invalid flux type")
             sys.exit()
            
             
@@ -152,7 +153,7 @@ class NavierStokesSolverParameters(EulerSolverParameters):
             return CDN(grid, 6)
             
         else:
-            print "Invalid convection scheme"
+            print ("Invalid convection scheme")
             sys.exit()
 
 
@@ -164,7 +165,7 @@ class NavierStokesSolverParameters(EulerSolverParameters):
             return SutherlandViscosity(fluid.mu0, fluid.T0, fluid.C, fluid.R)
         
         else:
-            print "Invalid viscosity type"
+            print ("Invalid viscosity type")
             sys.exit()
             
             
