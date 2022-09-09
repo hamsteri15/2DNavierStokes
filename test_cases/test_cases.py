@@ -48,7 +48,7 @@ class Sod_x(TestCase):
 
         #rho p u v
         left=  [1.0, 1.0, 0.0, 0.0]  
-        right = [0.125, 1.0, 0.0, 0.0]
+        right = [0.125, 0.1, 0.0, 0.0]
         Wtemp[0:int(nx/2), :, :] = left
         Wtemp[int(nx/2):, :, :] = right
         

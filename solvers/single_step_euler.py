@@ -39,7 +39,52 @@ def main():
     
     case.apply_boundary_conditions(W, Equation.grid)
  
-    W = Equation.take_step(W)
+    eig_x, eig_y = Equation.get_eigenvalues(W)
+
+    Equation.eig_x = eig_x
+    Equation.eig_y = eig_y
+
+    U = Equation.primitive_to_conservative(W)
+
+    """
+    flux_method = PhysicalFlux(Equation.gamma)
+
+    Fx = flux_method.flux(U, "x")
+    print (Fx)
+
+    """
+
+    """
+    fl, fr = Equation.flux_method.flux(U, Equation.eig_x, direction="x")
+
+    print (fl)
+    #print (fr[:,:,2])
+   
+
+    """
+
+    U = Equation.primitive_to_conservative(W)
+    dU = Equation.dU_convection_2d(U)
+    
+    rho = dU[:, 3, 0]
+    rhoE = dU[:, 3, 1]
+    rhou = dU[:, 3, 2]
+    rhov = dU[:, 3, 3]
+    
+    print ("rho: ")
+    print (rho)
+
+    """
+    print ("rhoE: ")
+    print (rhoE)
+
+    print ("rhou: ")
+    print (rhou)
+
+    print ("rhov: ")
+    print (rhov)
+    """
+    
 
 
     
